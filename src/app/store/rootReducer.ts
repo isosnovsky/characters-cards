@@ -1,6 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import { themeSlice } from '@/entities/theme'
+
+import { query } from '@/shared/api'
 
 export const rootReducer = combineReducers({
-  [themeSlice.name]: themeSlice.reducer,
+  [query.reducerPath]: query.reducer,
 })

@@ -1,29 +1,37 @@
 import { configureStore } from '@reduxjs/toolkit'
-import storage from "redux-persist/lib/storage";
-import {FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE} from "redux-persist";
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
-import {themeSlice} from "@/entities/theme";
-import {rootReducer} from "@/app/store/rootReducer";
+import { rootReducer } from '@/app/store/rootReducer'
+import { query } from '@/shared/api'
 
 const persistConfig = {
-    key: 'root',
-    storage,
-    whitelist: [themeSlice.name],
+  key: 'root',
+  storage,
 }
 
 function createStore() {
-    return configureStore({
-        reducer: persistReducer(
-            persistConfig,
-            rootReducer
-        ) as unknown as typeof rootReducer,
-        middleware: (getDefaultMiddleware) =>
-            getDefaultMiddleware({
-                serializableCheck: {
-                    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-                },
-            }),
-    })
+  return configureStore({
+    reducer: persistReducer(
+      persistConfig,
+      rootReducer
+    ) as unknown as typeof rootReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }).concat(query.middleware),
+  })
 }
 
 export const store = createStore()
