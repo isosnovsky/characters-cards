@@ -1,0 +1,20 @@
+import { type BaseQueryFn } from '@reduxjs/toolkit/dist/query/baseQueryTypes'
+import {
+  type FetchArgs,
+  type FetchBaseQueryError,
+  type FetchBaseQueryMeta,
+} from '@reduxjs/toolkit/dist/query/fetchBaseQuery'
+import { fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+
+// eslint-disable-next-line import/no-internal-modules
+import { config } from '../lib/config'
+
+export const baseQuery: BaseQueryFn<
+  string | FetchArgs,
+  unknown,
+  FetchBaseQueryError,
+  {},
+  FetchBaseQueryMeta
+> = fetchBaseQuery({
+  baseUrl: config.API_ENDPOINT,
+})

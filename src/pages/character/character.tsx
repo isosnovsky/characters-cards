@@ -1,7 +1,3 @@
 export function Character() {
-  return (
-    <div>
-      Другая
-    </div>
-  )
+  return <div>Другая</div>
 }
