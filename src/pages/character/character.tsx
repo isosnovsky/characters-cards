@@ -2,7 +2,15 @@ import { Container, Box, keyframes, VStack, Button } from '@chakra-ui/react'
 import { Link as RRLink, useNavigate, useParams } from 'react-router-dom'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 
-import { CharacterCard } from '@/entities/characters'
+import {
+  CharacterCard,
+  CharacterCardSkeleton,
+  charactersApi,
+  useDetailCharacterQuery,
+} from '@/entities/characters'
+import type { Character } from '@/entities/characters'
+import { useDebounceCallback } from '@/shared/hooks'
+import { useAppDispatch } from '@/shared/model'
 
 const gradient = keyframes`
   0% {
@@ -18,6 +26,33 @@ const gradient = keyframes`
 export function Character() {
   const { characterId } = useParams()
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const { data, isFetching } = useDetailCharacterQuery(characterId) as {
+    data?: Character
+    isFetching: boolean
+  }
+
+  const handleChangeAttribute = (
+    attributeKey: string,
+    attributeValue: string
+  ) => {
+    dispatch(
+      charactersApi.util.updateQueryData(
+        charactersApi.endpoints.detailCharacter.name,
+        characterId,
+        (draftCharacter: Character) => {
+          draftCharacter[attributeKey] = attributeValue
+        }
+      )
+    )
+    dispatch(charactersApi.util.invalidateTags(['People']))
+  }
+
+  const debouncedChangedAttribute = useDebounceCallback(
+    handleChangeAttribute,
+    300,
+    [handleChangeAttribute]
+  )
 
   return (
     <>
@@ -59,7 +94,14 @@ export function Character() {
             BACK
           </Button>
           <Box maxWidth="500px" width="100%">
-            <CharacterCard id={characterId} />
+            {isFetching ? (
+              <CharacterCardSkeleton />
+            ) : (
+              <CharacterCard
+                character={data}
+                onChangeAttribute={debouncedChangedAttribute}
+              />
+            )}
           </Box>
         </VStack>
       </Container>

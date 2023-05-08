@@ -1,3 +1,6 @@
+import { Character } from '../../model'
+
 export type ICharacterCardProps = {
-  id?: string
+  character: Character
+  onChangeAttribute: (key: string, value: string) => void
 }
