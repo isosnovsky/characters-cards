@@ -24,6 +24,12 @@ export const charactersApi = query.injectEndpoints({
       query: (characterId) => ({
         url: `/people/${characterId}`,
       }),
+      transformResponse(characters: Character) {
+        return {
+          ...characters,
+          id: characters.url.split('/').at(-2),
+        }
+      },
     }),
   }),
 })

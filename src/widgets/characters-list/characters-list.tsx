@@ -17,11 +17,6 @@ export function CharactersList({
   onPageChange,
 }: ICharactersListProps) {
   const { data, isFetching } = useAllCharactersQuery(pageNumber)
-  // const newData = useMemo(() => {
-  //   data?.result.map((character: Character) => {
-  //     charactersApi.endpoints.detailCharacter.select(character.id)
-  //   })
-  // }, [data, charactersApi])
 
   return (
     <Box>
