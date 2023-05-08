@@ -7,7 +7,7 @@ import {
   SkeletonText,
 } from '@chakra-ui/react'
 
-import { ICharacterCardPreviewSkeletonProps } from './character-card-preview-skeleton.types'
+import type { ICharacterCardPreviewSkeletonProps } from './character-card-preview-skeleton.types'
 
 export function CharacterCardPreviewSkeleton({
   count,

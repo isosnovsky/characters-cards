@@ -10,6 +10,8 @@ import { Pagination } from '@/shared/ui'
 
 import { ICharactersListProps } from './characters-list.types'
 
+const PER_PAGE = 10
+
 export function CharactersList({
   pageNumber = 1,
   onPageChange,
@@ -29,11 +31,11 @@ export function CharactersList({
         fontSize={[110, 150, 260]}
         textAlign="center"
         p="100px 0"
-        color="#5ec1f3"
+        color="#ae699f"
         lineHeight="1"
         height="100vh"
         position="relative"
-        textShadow="20px 20px 0px #fff"
+        textShadow="20px 20px 0px #3ea0cf"
       >
         <Highlight
           query="characters"
@@ -55,7 +57,7 @@ export function CharactersList({
       </Heading>
       <SimpleGrid minChildWidth="200px" spacing="40px">
         {isFetching ? (
-          <CharacterCardPreviewSkeleton count={10} />
+          <CharacterCardPreviewSkeleton count={PER_PAGE} />
         ) : (
           data?.results.map((character: Character) => (
             <CharacterCardPreview key={character.id} character={character} />
@@ -67,7 +69,7 @@ export function CharactersList({
           onPageChange={onPageChange}
           currentPage={pageNumber}
           totalCount={data?.count}
-          perPage={10}
+          perPage={PER_PAGE}
         />
       </Box>
     </Box>
