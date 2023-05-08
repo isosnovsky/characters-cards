@@ -1,8 +1,10 @@
-import { Link as RRLink } from 'react-router-dom'
+import { Link as RRLink, useNavigate } from "react-router-dom";
 import { Container, Box, Heading, Center, VStack, Link } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 
 export function NotFound() {
+  const navigate = useNavigate()
+
   return (
     <>
       <Box
@@ -28,7 +30,7 @@ export function NotFound() {
               That is a wrong way
             </Heading>
             <Link
-              to="/"
+              onClick={() => navigate(-1)}
               as={RRLink}
               padding="10px"
               width="100%"

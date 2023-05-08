@@ -12,6 +12,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/character/:characterId',
+    errorElement: <NotFound />,
     element: <Character />,
   },
 ])
