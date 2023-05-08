@@ -14,9 +14,9 @@ export function useDebounceCallback<T extends AnyFunction>(
   delay: number,
   deps: DependencyList
 ) {
-  const timeoutIdRef = useRef<number>()
+  const timeoutIdRef = useRef() as { current: number }
   const debouncedCallback = useCallback(
-    (...args) => {
+    (...args: unknown) => {
       clearTimeout(timeoutIdRef.current)
 
       timeoutIdRef.current = setTimeout(() => {

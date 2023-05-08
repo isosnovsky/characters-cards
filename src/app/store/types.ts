@@ -6,8 +6,7 @@ export type AppStore = ReturnType<typeof store>
 /**
  * App typed `dispatch`.
  */
-export type AppDispatch = AppStore['dispatch']
-
+export type AppDispatch = typeof store.dispatch
 /**
  * Thunk API with global state.
  */

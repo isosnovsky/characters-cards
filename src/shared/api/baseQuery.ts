@@ -6,8 +6,7 @@ import {
 } from '@reduxjs/toolkit/dist/query/fetchBaseQuery'
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-// eslint-disable-next-line import/no-internal-modules
-import { config } from '../lib/config'
+import { config } from '../lib'
 
 export const baseQuery: BaseQueryFn<
   string | FetchArgs,

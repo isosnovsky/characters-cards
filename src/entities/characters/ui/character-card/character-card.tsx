@@ -3,15 +3,13 @@ import { useDispatch } from 'react-redux'
 
 import { EditableInput } from '@/shared/ui'
 import { useDebounceCallback } from '@/shared/hooks'
-import type { Character } from '@/entities/characters'
 
+import type { Character } from '../../model'
 import { useDetailCharacterQuery, charactersApi } from '../../api'
 
-type Props = {
-  id?: string
-}
+import { ICharacterCardProps } from './character-card.types'
 
-export function CharacterCard({ id = null }: Props) {
+export function CharacterCard({ id = null }: ICharacterCardProps) {
   const { data, isLoading } = useDetailCharacterQuery(id)
   const dispatch = useDispatch()
 

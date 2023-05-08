@@ -1,6 +1,6 @@
 import { query } from '@/shared/api'
 
-import { type Character, People } from '../model/types'
+import type { People, Character } from '../model'
 
 export const charactersApi = query.injectEndpoints({
   endpoints: (build) => ({
@@ -9,7 +9,7 @@ export const charactersApi = query.injectEndpoints({
       query: (page = 1) => ({
         url: `/people/?page=${page}`,
       }),
-      transformResponse(characters: People, d, a) {
+      transformResponse(characters: People) {
         return {
           ...characters,
           results: characters.results.map((character) => ({

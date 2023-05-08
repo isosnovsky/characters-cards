@@ -1,4 +1,4 @@
-import { Character } from '@/entities/characters'
+import { Character } from '../../model'
 
 export type ICharacterCardPreviewProps = {
   character: Character
