@@ -8,15 +8,11 @@ import {
   StackDivider,
   Text,
 } from '@chakra-ui/react'
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
-import { type Character } from '../../model/types'
+import { ICharacterCardPreviewProps } from './character-card-preview.types'
 
-type Props = {
-  character: Character
-}
-
-export function CharacterCardPreview(props: Props) {
+export function CharacterCardPreview(props: ICharacterCardPreviewProps) {
   const { name, height, mass, skin_color, id } = props.character
 
   return (

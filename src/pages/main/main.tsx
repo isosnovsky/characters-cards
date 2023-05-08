@@ -18,7 +18,7 @@ export function Main() {
   const [searchParams, setSearchParams] = useSearchParams()
   const page = searchParams.get('page') ?? 1
 
-  const onPageChange = (number) => {
+  const onPageChange = (number: string) => {
     setSearchParams({
       page: number,
     })

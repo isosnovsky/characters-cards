@@ -3,12 +3,12 @@ import { Box, Heading, SimpleGrid, Highlight } from '@chakra-ui/react'
 import {
   useAllCharactersQuery,
   CharacterCardPreview,
-  charactersApi,
+  CharacterCardPreviewSkeleton,
   Character,
 } from '@/entities/characters'
 import { Pagination } from '@/shared/ui'
 
-export function CharactersList({ page = 1, onPageChange} ) {
+export function CharactersList({ page = 1, onPageChange }) {
   const { data, isFetching } = useAllCharactersQuery(page)
   // const newData = useMemo(() => {
   //   data?.result.map((character: Character) => {
@@ -49,11 +49,13 @@ export function CharactersList({ page = 1, onPageChange} ) {
         </Highlight>
       </Heading>
       <SimpleGrid minChildWidth="200px" spacing="40px">
-        {isFetching
-          ? 'LOADING'
-          : data?.results.map((character: Character) => (
-              <CharacterCardPreview key={character.id} character={character} />
-            ))}
+        {isFetching ? (
+          <CharacterCardPreviewSkeleton count={10} />
+        ) : (
+          data?.results.map((character: Character) => (
+            <CharacterCardPreview key={character.id} character={character} />
+          ))
+        )}
       </SimpleGrid>
       <Box margin="50px 0 0 0">
         <Pagination

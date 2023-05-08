@@ -1,4 +1,4 @@
-export { CharacterCardPreview, CharacterCard } from './ui'
+export { CharacterCardPreview, CharacterCard, CharacterCardPreviewSkeleton } from './ui'
 export type { Character, People } from './model'
 export {
   useAllCharactersQuery,
