@@ -1,54 +1,174 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Heading,
-  Stack,
-  Box,
-  StackDivider,
-  Text,
-} from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { Heading, Highlight, Stack, Text, HStack } from '@chakra-ui/react'
+import { useDispatch } from 'react-redux'
 
-import { type Category } from '../../model/types'
+import { EditableInput } from '@/shared/ui'
+import { useDebounceCallback } from '@/shared/hooks'
+import type { Character } from '@/entities/characters'
+
+import { useDetailCharacterQuery, charactersApi } from '../../api'
 
 type Props = {
-  character: Category
+  id?: string
 }
 
-export function CharacterCard(props: Props) {
-  const { name, height, mass, skin_color, id } = props.character
+export function CharacterCard({ id = null }: Props) {
+  const { data, isLoading } = useDetailCharacterQuery(id)
+  const dispatch = useDispatch()
+
+  const handleChangeAttribute = (
+    attributeKey: keyof Character,
+    attributeValue: string
+  ) => {
+    dispatch(
+      charactersApi.util.updateQueryData(
+        'detailCharacter',
+        id,
+        (draftPosts: Character) => {
+          draftPosts[attributeKey] = attributeValue
+        }
+      )
+    )
+    dispatch(charactersApi.util.invalidateTags(['People']))
+  }
+
+  const debouncedChangedAttribute = useDebounceCallback(
+    handleChangeAttribute,
+    300,
+    [handleChangeAttribute]
+  )
+
+  if (isLoading) {
+    return 'loading'
+  }
+
+  const { name, height, mass, skin_color, eye_color, hair_color, birth_year } =
+    data as Record<keyof Character, string>
 
   return (
-    <Link to={`/character/${id}`}>
-      <Card
-        bg="radial-gradient( circle 369px at -2.9% 12.9%,  rgba(247,234,163,1) 0%, rgba(236,180,238,0.56) 46.4%, rgba(163,203,247,1) 100.7% );"
-        transition="box-shadow 0.4s"
-        color="white"
-        _hover={{
-          boxShadow: '4px 8px 20px 1px hsl(216.48deg 71.31% 53.21% / 44%)',
-        }}
-      >
-        <CardHeader>
-          <Heading size="md">{name}</Heading>
-        </CardHeader>
-
-        <CardBody>
-          <Stack divider={<StackDivider />} spacing="4">
-            <Box>
-              <Text pt="2" fontSize="sm">
-                Height: {height}
-              </Text>
-              <Text pt="2" fontSize="sm">
-                Mass: {mass}
-              </Text>
-              <Text pt="2" fontSize="sm">
-                Skin color: {skin_color}
-              </Text>
-            </Box>
-          </Stack>
-        </CardBody>
-      </Card>
-    </Link>
+    <Stack fontFamily="Jedi" fontSize="30px">
+      <Heading fontFamily="Jedi" fontSize="100px" marginBottom={20}>
+        {name}
+      </Heading>
+      <HStack>
+        <Text>
+          <Highlight
+            query="Birth year"
+            styles={{
+              color: 'white',
+              textShadow: 'none',
+              bg: '#2a35f2',
+            }}
+          >
+            Birth year:
+          </Highlight>{' '}
+        </Text>
+        <EditableInput
+          defaultValue={birth_year}
+          onChange={(attributeValue) =>
+            debouncedChangedAttribute('birth_year', attributeValue)
+          }
+        />
+      </HStack>
+      <HStack>
+        <Text>
+          <Highlight
+            query="height"
+            styles={{
+              color: 'white',
+              textShadow: 'none',
+              bg: '#2a35f2',
+            }}
+          >
+            height:
+          </Highlight>{' '}
+        </Text>
+        <EditableInput
+          defaultValue={height}
+          onChange={(attributeValue) =>
+            debouncedChangedAttribute('height', attributeValue)
+          }
+        />
+      </HStack>
+      <HStack>
+        <Text>
+          <Highlight
+            query="mass"
+            styles={{
+              color: 'white',
+              textShadow: 'none',
+              bg: '#2a35f2',
+            }}
+          >
+            mass:
+          </Highlight>{' '}
+        </Text>
+        <EditableInput
+          defaultValue={mass}
+          onChange={(attributeValue) =>
+            debouncedChangedAttribute('mass', attributeValue)
+          }
+        />
+      </HStack>
+      <HStack>
+        <Text>
+          <Highlight
+            query="Skin color"
+            styles={{
+              color: 'white',
+              textShadow: 'none',
+              bg: '#2a35f2',
+            }}
+          >
+            Skin color:
+          </Highlight>{' '}
+        </Text>
+        <EditableInput
+          defaultValue={skin_color}
+          onChange={(attributeValue) =>
+            debouncedChangedAttribute('skin_color', attributeValue)
+          }
+        />
+      </HStack>
+      <HStack>
+        <Text>
+          <Highlight
+            query="Eye color"
+            styles={{
+              color: 'white',
+              textShadow: 'none',
+              bg: '#2a35f2',
+            }}
+          >
+            Eye color:
+          </Highlight>{' '}
+        </Text>
+        <EditableInput
+          defaultValue={eye_color}
+          onChange={(attributeValue) =>
+            debouncedChangedAttribute('eye_color', attributeValue)
+          }
+        />
+      </HStack>
+      <HStack>
+        <Text>
+          <Highlight
+            query="Hair color"
+            styles={{
+              color: 'white',
+              textShadow: 'none',
+              bg: '#2a35f2',
+            }}
+          >
+            Hair color:
+          </Highlight>{' '}
+        </Text>
+        <EditableInput
+          defaultValue={hair_color}
+          onChange={(attributeValue) =>
+            debouncedChangedAttribute('hair_color', attributeValue)
+          }
+        />
+      </HStack>
+    </Stack>
   )
 }

@@ -1,16 +1,20 @@
 import { Box, Heading, SimpleGrid, Highlight } from '@chakra-ui/react'
-import { useState } from 'react'
 
-import { useAllCharactersQuery, CharacterCard } from '@/entities/characters'
+import {
+  useAllCharactersQuery,
+  CharacterCardPreview,
+  charactersApi,
+  Character,
+} from '@/entities/characters'
 import { Pagination } from '@/shared/ui'
 
-export function CharactersList() {
-  const [page, setPage] = useState<number>(1)
-  const { data, isLoading } = useAllCharactersQuery(page)
-
-  if (isLoading) {
-    return <div>isloading</div>
-  }
+export function CharactersList({ page = 1, onPageChange} ) {
+  const { data, isFetching } = useAllCharactersQuery(page)
+  // const newData = useMemo(() => {
+  //   data?.result.map((character: Character) => {
+  //     charactersApi.endpoints.detailCharacter.select(character.id)
+  //   })
+  // }, [data, charactersApi])
 
   return (
     <Box>
@@ -45,13 +49,15 @@ export function CharactersList() {
         </Highlight>
       </Heading>
       <SimpleGrid minChildWidth="200px" spacing="40px">
-        {data?.results.map((character) => (
-          <CharacterCard key={character.id} character={character} />
-        ))}
+        {isFetching
+          ? 'LOADING'
+          : data?.results.map((character: Character) => (
+              <CharacterCardPreview key={character.id} character={character} />
+            ))}
       </SimpleGrid>
-      <Box margin="50px 0">
+      <Box margin="50px 0 0 0">
         <Pagination
-          onPageChange={setPage}
+          onPageChange={onPageChange}
           currentPage={page}
           totalCount={data?.count}
           perPage={10}

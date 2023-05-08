@@ -17,4 +17,9 @@ export type Character = {
   url: string
 }
 
-export type Characters = Character[]
+export type People = {
+  count: number
+  next: string
+  previous: string
+  results: Character[]
+}

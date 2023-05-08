@@ -1,6 +1,7 @@
-export { CharacterCard } from './ui/character-card'
+export { CharacterCardPreview, CharacterCard } from './ui'
+export type { Character, People } from './model'
 export {
   useAllCharactersQuery,
   useDetailCharacterQuery,
-  categoryApi,
-} from './api/categoryApi'
+  charactersApi,
+} from './api'

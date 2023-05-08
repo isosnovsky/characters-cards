@@ -1,14 +1,15 @@
 import { query } from '@/shared/api'
 
-import { type Character } from '../model/types'
+import { type Character, People } from '../model/types'
 
-export const categoryApi = query.injectEndpoints({
+export const charactersApi = query.injectEndpoints({
   endpoints: (build) => ({
-    allCharacters: build.query<unknown, void>({
-      query: (page) => ({
+    allCharacters: build.query<People, number>({
+      providesTags: ['People'],
+      query: (page = 1) => ({
         url: `/people/?page=${page}`,
       }),
-      transformResponse(characters) {
+      transformResponse(characters: People, d, a) {
         return {
           ...characters,
           results: characters.results.map((character) => ({
@@ -19,6 +20,7 @@ export const categoryApi = query.injectEndpoints({
       },
     }),
     detailCharacter: build.query<Character, number>({
+      providesTags: ['Character'],
       query: (characterId) => ({
         url: `/people/${characterId}`,
       }),
@@ -26,4 +28,4 @@ export const categoryApi = query.injectEndpoints({
   }),
 })
 
-export const { useAllCharactersQuery, useDetailCharacterQuery } = categoryApi
+export const { useAllCharactersQuery, useDetailCharacterQuery } = charactersApi
