@@ -13,7 +13,16 @@ import { Link } from 'react-router-dom'
 import { ICharacterCardPreviewProps } from './character-card-preview.types'
 
 export function CharacterCardPreview(props: ICharacterCardPreviewProps) {
-  const { name, height, mass, skin_color, id } = props.character
+  const {
+    name,
+    height,
+    mass,
+    skin_color,
+    birth_year,
+    id,
+    eye_color,
+    hair_color,
+  } = props.character
 
   return (
     <Link to={`/character/${id}`}>
@@ -30,18 +39,13 @@ export function CharacterCardPreview(props: ICharacterCardPreviewProps) {
         </CardHeader>
 
         <CardBody>
-          <Stack divider={<StackDivider />} spacing="4">
-            <Box>
-              <Text pt="2" fontSize="sm">
-                Height: {height}
-              </Text>
-              <Text pt="2" fontSize="sm">
-                Mass: {mass}
-              </Text>
-              <Text pt="2" fontSize="sm">
-                Skin color: {skin_color}
-              </Text>
-            </Box>
+          <Stack spacing="4">
+            <Text fontSize="sm">Birth year: {birth_year}</Text>
+            <Text fontSize="sm">Height: {height}</Text>
+            <Text fontSize="sm">Mass: {mass}</Text>
+            <Text fontSize="sm">Skin color: {skin_color}</Text>
+            <Text fontSize="sm">Eye color: {eye_color}</Text>
+            <Text fontSize="sm">Hair color: {hair_color}</Text>
           </Stack>
         </CardBody>
       </Card>

@@ -5,10 +5,6 @@ import { PaginationProps } from './pagination.types'
 
 export function Pagination({
   currentPage,
-  lastPage,
-  previousPages,
-  nextPages,
-  siblingsCount,
   onPageChange,
   totalCount,
   perPage,

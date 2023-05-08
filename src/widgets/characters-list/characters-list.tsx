@@ -4,12 +4,17 @@ import {
   useAllCharactersQuery,
   CharacterCardPreview,
   CharacterCardPreviewSkeleton,
-  Character,
 } from '@/entities/characters'
+import type { Character } from '@/entities/characters'
 import { Pagination } from '@/shared/ui'
 
-export function CharactersList({ page = 1, onPageChange }) {
-  const { data, isFetching } = useAllCharactersQuery(page)
+import { ICharactersListProps } from './characters-list.types'
+
+export function CharactersList({
+  pageNumber = 1,
+  onPageChange,
+}: ICharactersListProps) {
+  const { data, isFetching } = useAllCharactersQuery(pageNumber)
   // const newData = useMemo(() => {
   //   data?.result.map((character: Character) => {
   //     charactersApi.endpoints.detailCharacter.select(character.id)
@@ -60,7 +65,7 @@ export function CharactersList({ page = 1, onPageChange }) {
       <Box margin="50px 0 0 0">
         <Pagination
           onPageChange={onPageChange}
-          currentPage={page}
+          currentPage={pageNumber}
           totalCount={data?.count}
           perPage={10}
         />

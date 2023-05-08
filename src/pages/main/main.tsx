@@ -16,11 +16,11 @@ const gradient = keyframes`
 
 export function Main() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const page = searchParams.get('page') ?? 1
+  const pageNumber = searchParams.get('pageNumber') ?? 1
 
-  const onPageChange = (number: string) => {
+  const handlePageChange = (page: number) => {
     setSearchParams({
-      page: number,
+      pageNumber: String(page),
     })
   }
 
@@ -39,7 +39,10 @@ export function Main() {
         backgroundSize="400% 400%"
       />
       <Container maxW="900px" paddingBottom={10}>
-        <CharactersList page={Number(page)} onPageChange={onPageChange} />
+        <CharactersList
+          pageNumber={Number(pageNumber)}
+          onPageChange={handlePageChange}
+        />
       </Container>
     </>
   )
