@@ -19,19 +19,33 @@ export const charactersApi = query.injectEndpoints({
         }
       },
     }),
+    foundCharacters: build.mutation<People, string>({
+      query: (attribute) => ({
+        url: `people/?search=${attribute}`,
+      }),
+      transformResponse(characters: People) {
+        return {
+          ...characters,
+          results: characters.results.map((character) => ({
+            id: character.url.split('/').at(-2),
+            ...character,
+          })),
+        }
+      }
+    }),
     detailCharacter: build.query<Character, number>({
       providesTags: ['Character'],
       query: (characterId) => ({
         url: `/people/${characterId}`,
       }),
-      transformResponse(characters: Character) {
+      transformResponse(character: Character) {
         return {
-          ...characters,
-          id: characters.url.split('/').at(-2),
+          ...character,
+          id: character.url.split('/').at(-2),
         }
       },
     }),
   }),
 })
 
-export const { useAllCharactersQuery, useDetailCharacterQuery } = charactersApi
+export const { useAllCharactersQuery, useDetailCharacterQuery, useFoundCharactersMutation } = charactersApi

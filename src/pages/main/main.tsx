@@ -1,7 +1,19 @@
-import { Container, Box, keyframes, Heading, Highlight } from '@chakra-ui/react'
+import {
+  Container,
+  Box,
+  keyframes,
+  Heading,
+  Highlight,
+  InputGroup,
+  InputRightElement,
+  Input,
+  IconButton,
+} from '@chakra-ui/react'
 import { useSearchParams } from 'react-router-dom'
+import { SearchIcon } from '@chakra-ui/icons'
 
-import { CharactersList } from '@/widgets/characters-list/characters-list'
+import { CharactersList } from '@/widgets/characters-list'
+import { useFoundCharactersMutation } from '@/entities/characters'
 
 const gradient = keyframes`
   0% {
@@ -16,11 +28,28 @@ const gradient = keyframes`
 
 export function Main() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const pageNumber = searchParams.get('pageNumber') ?? 1
+  const [foundCharacters] = useFoundCharactersMutation({
+    fixedCacheKey: 'shared-found-characters',
+  })
+  const pageNumber = searchParams.get('page') ?? 1
+  const attr = searchParams.get('q')
 
   const handlePageChange = (page: number) => {
+    searchParams.set('page', String(page))
+    setSearchParams(searchParams)
+  }
+
+  const handleAttrChange = (attr: string) => {
+    if (!attr) {
+      searchParams.delete('q')
+      setSearchParams(searchParams)
+
+      return
+    }
+
+    searchParams.delete('page')
     setSearchParams({
-      pageNumber: String(page),
+      q: attr,
     })
   }
 
@@ -63,13 +92,37 @@ export function Main() {
               bg: '#2a35f2',
               fontSize: '44px',
               color: 'white',
+              fontFamily: 'Jedi',
               textShadow: 'none',
             }}
           >
             Star wars characters
           </Highlight>
         </Heading>
+        <InputGroup>
+          <Input
+            placeholder="character attribute"
+            onChange={(event) => {
+              handleAttrChange(event.target.value)
+
+              if (event.target.value) {
+                foundCharacters(event.target.value)
+              }
+            }}
+            color="white"
+          />
+          <InputRightElement
+            children={
+              <IconButton
+                aria-label="search characters"
+                icon={<SearchIcon color="gray.300" />}
+                variant="ghost"
+              />
+            }
+          />
+        </InputGroup>
         <CharactersList
+          attr={attr}
           pageNumber={Number(pageNumber)}
           onPageChange={handlePageChange}
         />
