@@ -1,7 +1,6 @@
 export interface PaginationProps {
   onPageChange: (page: number) => void
   currentPage?: number
-  lastPage: number
   totalCount: number
   perPage: number
 }

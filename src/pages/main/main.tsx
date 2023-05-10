@@ -102,7 +102,7 @@ export function Main() {
           <Input
             placeholder="find character"
             _placeholder={{
-              color: 'white',
+              color: '#b2b2b2',
             }}
             onChange={(event) => {
               handleAttrChange(event.target.value)

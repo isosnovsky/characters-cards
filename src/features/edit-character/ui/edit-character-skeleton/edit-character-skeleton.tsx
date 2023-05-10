@@ -1,6 +1,6 @@
 import { Fade, Stack, SkeletonText } from '@chakra-ui/react'
 
-export function CharacterCardSkeleton() {
+export function EditCharacterSkeleton() {
   return (
     <Fade in>
       <Stack>

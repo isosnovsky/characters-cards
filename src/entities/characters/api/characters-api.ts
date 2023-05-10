@@ -3,7 +3,7 @@ import { query } from '@/shared/api'
 import type { People, Character } from '../model'
 import { transformCharacter, transformPeople } from '../lib'
 
-import type { CharacterResponse, PeopleResponse } from '.'
+import type { PeopleResponse, CharacterResponse } from '.'
 
 export const charactersApi = query.injectEndpoints({
   endpoints: (build) => ({
@@ -24,7 +24,7 @@ export const charactersApi = query.injectEndpoints({
         return transformPeople(characters)
       },
     }),
-    detailCharacter: build.query<Character, number>({
+    detailCharacter: build.query<Character, string>({
       providesTags: ['Character'],
       query: (characterId) => ({
         url: `/people/${characterId}`,

@@ -111,5 +111,6 @@ module.exports = {
     "react/no-unknown-property": ["error", { "ignore": ["css"] }],
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",
+    "react/no-children-prop": "off",
   },
 };

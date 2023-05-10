@@ -1,8 +1,7 @@
 export {
   CharacterCardPreview,
-  CharacterCard,
   CharacterCardPreviewSkeleton,
-  CharacterCardSkeleton,
+  EditCharacterSkeleton,
 } from './ui'
 export type { Character, People } from './model'
 export { selectCharacterSelector } from './model'

@@ -16,7 +16,7 @@ export function useDebounceCallback<T extends AnyFunction>(
 ) {
   const timeoutIdRef = useRef() as { current: number }
   const debouncedCallback = useCallback(
-    (...args: unknown) => {
+    (...args: unknown[]) => {
       clearTimeout(timeoutIdRef.current)
 
       timeoutIdRef.current = setTimeout(() => {

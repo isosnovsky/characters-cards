@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { selectCharacterSelector } from '../../model'
-import type { Character } from '../../model'
 
 import type { ICharacterCardPreviewProps } from './character-card-preview.types'
 
@@ -20,9 +19,7 @@ export function CharacterCardPreview({
 }: ICharacterCardPreviewProps) {
   const cachedCharacter = useSelector(selectCharacterSelector(character.id))
   const { name, height, mass, skinColor, birthYear, id, eyeColor, hairColor } =
-    cachedCharacter.isUninitialized
-      ? character
-      : (cachedCharacter.data as Character)
+    cachedCharacter.isUninitialized ? character : cachedCharacter.data
 
   return (
     <Fade in>

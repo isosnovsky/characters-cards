@@ -3,13 +3,11 @@ import { Link as RRLink, useNavigate, useParams } from 'react-router-dom'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 
 import {
-  CharacterCard,
-  CharacterCardSkeleton,
-  charactersApi,
-  useDetailCharacterQuery,
-} from '@/entities/characters'
+  EditCharacterForm,
+  EditCharacterSkeleton,
+} from '@/features/edit-character'
+import { charactersApi, useDetailCharacterQuery } from '@/entities/characters'
 import type { Character } from '@/entities/characters'
-import { useDebounceCallback } from '@/shared/hooks'
 import { useAppDispatch } from '@/shared/model'
 
 const gradient = keyframes`
@@ -27,32 +25,21 @@ export function Character() {
   const { characterId } = useParams()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const { data, isFetching } = useDetailCharacterQuery(characterId) as {
-    data?: Character
-    isFetching: boolean
-  }
+  const { data, isFetching } = useDetailCharacterQuery(characterId)
 
-  const handleChangeAttribute = (
-    attributeKey: string,
-    attributeValue: string
-  ) => {
+  const handleChangeAttribute = (character: Character) => {
     dispatch(
       charactersApi.util.updateQueryData(
-        charactersApi.endpoints.detailCharacter.name,
+        'detailCharacter',
         characterId,
-        (draftCharacter: Character) => {
-          draftCharacter[attributeKey] = attributeValue
-        }
+        (draftCharacter: Character) => ({
+          ...draftCharacter,
+          ...character,
+        })
       )
     )
     dispatch(charactersApi.util.invalidateTags(['People']))
   }
-
-  const debouncedChangedAttribute = useDebounceCallback(
-    handleChangeAttribute,
-    300,
-    [handleChangeAttribute]
-  )
 
   return (
     <>
@@ -95,11 +82,11 @@ export function Character() {
           </Button>
           <Box maxWidth="500px" width="100%">
             {isFetching ? (
-              <CharacterCardSkeleton />
+              <EditCharacterSkeleton />
             ) : (
-              <CharacterCard
+              <EditCharacterForm
                 character={data}
-                onChangeAttribute={debouncedChangedAttribute}
+                onChangeAttribute={handleChangeAttribute}
               />
             )}
           </Box>

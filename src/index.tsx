@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 
 import { AppWithProviders } from '@/app'
 
-const root = document.getElementById('root') as HTMLElement
+const root = document.getElementById('root')
 const globalStyles = css`
   @font-face {
     font-family: 'Jedi';
