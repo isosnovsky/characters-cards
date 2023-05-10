@@ -32,7 +32,10 @@ export function CharactersList({
 
   return (
     <Box>
-      <SimpleGrid minChildWidth="200px" spacing="40px">
+      <SimpleGrid
+        spacing="40px"
+        templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
+      >
         {isFetching || result.isLoading ? (
           <CharacterCardPreviewSkeleton count={PER_PAGE} />
         ) : (

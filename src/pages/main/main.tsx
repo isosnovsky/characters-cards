@@ -73,9 +73,8 @@ export function Main() {
           fontFamily="Jedihol"
           fontSize={[110, 150, 260]}
           textAlign="center"
-          p="100px 0"
+          p="100px 0 0"
           color="#ae699f"
-          lineHeight="1"
           height="100vh"
           position="relative"
           textShadow="20px 20px 0px #3ea0cf"
@@ -99,9 +98,12 @@ export function Main() {
             Star wars characters
           </Highlight>
         </Heading>
-        <InputGroup>
+        <InputGroup maxWidth="300px" m="0 auto 50px">
           <Input
-            placeholder="character attribute"
+            placeholder="find character"
+            _placeholder={{
+              color: 'white',
+            }}
             onChange={(event) => {
               handleAttrChange(event.target.value)
 

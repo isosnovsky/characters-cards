@@ -1,4 +1,4 @@
-import { Link as RRLink, useNavigate } from "react-router-dom";
+import { Link as RRLink, useNavigate } from 'react-router-dom'
 import { Container, Box, Heading, Center, VStack, Link } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 
@@ -37,7 +37,7 @@ export function NotFound() {
               textAlign="center"
               fontSize={[40, 70, 120]}
               fontFamily="Jedi"
-              background="radial-gradient( circle 369px at -2.9% 12.9%,  #C9FFBF 0%, #FFAFBD  51%, #C9FFBF  100%)"
+              background="radial-gradient(circle 369px at -2.9% 12.9%,  #C9FFBF 0%, #FFAFBD  51%, #C9FFBF  100%)"
               borderRadius="55px"
             >
               <ArrowBackIcon marginRight="20px" />
