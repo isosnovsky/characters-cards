@@ -4,3 +4,4 @@ export {
   useAllCharactersQuery,
   useFoundCharactersMutation,
 } from './characters-api'
+export * from './types'

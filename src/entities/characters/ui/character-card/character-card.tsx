@@ -17,7 +17,7 @@ export function CharacterCard({
     onChangeAttribute(attributeKey, attributeValue)
   }
 
-  const { name, height, mass, skin_color, eye_color, hair_color, birth_year } =
+  const { name, height, mass, skinColor, eyeColor, hairColor, birthYear } =
     character as Record<keyof Character, string>
 
   return (
@@ -40,9 +40,9 @@ export function CharacterCard({
             </Highlight>{' '}
           </Text>
           <EditableInput
-            defaultValue={birth_year}
+            defaultValue={birthYear}
             onChange={(attributeValue) =>
-              handleChangeAttribute('birth_year', attributeValue)
+              handleChangeAttribute('birthYear', attributeValue)
             }
           />
         </HStack>
@@ -100,9 +100,9 @@ export function CharacterCard({
             </Highlight>{' '}
           </Text>
           <EditableInput
-            defaultValue={skin_color}
+            defaultValue={skinColor}
             onChange={(attributeValue) =>
-              handleChangeAttribute('skin_color', attributeValue)
+              handleChangeAttribute('skinColor', attributeValue)
             }
           />
         </HStack>
@@ -120,9 +120,9 @@ export function CharacterCard({
             </Highlight>{' '}
           </Text>
           <EditableInput
-            defaultValue={eye_color}
+            defaultValue={eyeColor}
             onChange={(attributeValue) =>
-              handleChangeAttribute('eye_color', attributeValue)
+              handleChangeAttribute('eyeColor', attributeValue)
             }
           />
         </HStack>
@@ -140,9 +140,9 @@ export function CharacterCard({
             </Highlight>{' '}
           </Text>
           <EditableInput
-            defaultValue={hair_color}
+            defaultValue={hairColor}
             onChange={(attributeValue) =>
-              handleChangeAttribute('hair_color', attributeValue)
+              handleChangeAttribute('hairColor', attributeValue)
             }
           />
         </HStack>

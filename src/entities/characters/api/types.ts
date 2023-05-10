@@ -1,12 +1,11 @@
-export type Character = {
-  id: number
+export type CharacterResponse = {
   name: string
   height: string
   mass: string
-  hairColor: string
-  skinColor: string
-  eyeColor: string
-  birthUear: string
+  hair_color: string
+  skin_color: string
+  eye_color: string
+  birth_year: string
   gender: string
   homeworld: string
   films: string[]
@@ -18,9 +17,9 @@ export type Character = {
   url: string
 }
 
-export type People = {
+export type PeopleResponse = {
   count: number
   next: string
   previous: string
-  results: Character[]
+  results: CharacterResponse[]
 }

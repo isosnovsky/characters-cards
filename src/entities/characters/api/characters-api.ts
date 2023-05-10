@@ -1,6 +1,9 @@
 import { query } from '@/shared/api'
 
 import type { People, Character } from '../model'
+import { transformCharacter, transformPeople } from '../lib'
+
+import type { CharacterResponse, PeopleResponse } from '.'
 
 export const charactersApi = query.injectEndpoints({
   endpoints: (build) => ({
@@ -9,43 +12,32 @@ export const charactersApi = query.injectEndpoints({
       query: (page = 1) => ({
         url: `/people/?page=${page}`,
       }),
-      transformResponse(characters: People) {
-        return {
-          ...characters,
-          results: characters.results.map((character) => ({
-            id: character.url.split('/').at(-2),
-            ...character,
-          })),
-        }
+      transformResponse(characters: PeopleResponse) {
+        return transformPeople(characters)
       },
     }),
     foundCharacters: build.mutation<People, string>({
       query: (attribute) => ({
         url: `people/?search=${attribute}`,
       }),
-      transformResponse(characters: People) {
-        return {
-          ...characters,
-          results: characters.results.map((character) => ({
-            id: character.url.split('/').at(-2),
-            ...character,
-          })),
-        }
-      }
+      transformResponse(characters: PeopleResponse) {
+        return transformPeople(characters)
+      },
     }),
     detailCharacter: build.query<Character, number>({
       providesTags: ['Character'],
       query: (characterId) => ({
         url: `/people/${characterId}`,
       }),
-      transformResponse(character: Character) {
-        return {
-          ...character,
-          id: character.url.split('/').at(-2),
-        }
+      transformResponse(character: CharacterResponse) {
+        return transformCharacter(character)
       },
     }),
   }),
 })
 
-export const { useAllCharactersQuery, useDetailCharacterQuery, useFoundCharactersMutation } = charactersApi
+export const {
+  useAllCharactersQuery,
+  useDetailCharacterQuery,
+  useFoundCharactersMutation,
+} = charactersApi
