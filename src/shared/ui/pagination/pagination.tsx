@@ -11,6 +11,10 @@ export function Pagination({
 }: PaginationProps) {
   const pagesAmount = Math.ceil(totalCount / perPage)
 
+  if (pagesAmount <= 1) {
+    return null
+  }
+
   return (
     <Stack direction="row" mt="8" justify="center" align="center" spacing="6">
       <Stack direction="row" spacing="4">

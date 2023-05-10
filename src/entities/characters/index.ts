@@ -9,5 +9,4 @@ export {
   useAllCharactersQuery,
   useDetailCharacterQuery,
   charactersApi,
-  useFoundCharactersMutation,
 } from './api'

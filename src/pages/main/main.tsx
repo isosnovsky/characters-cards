@@ -11,9 +11,10 @@ import {
 } from '@chakra-ui/react'
 import { useSearchParams } from 'react-router-dom'
 import { SearchIcon } from '@chakra-ui/icons'
+import { useEffect, useState } from 'react'
 
 import { CharactersList } from '@/widgets/characters-list'
-import { useFoundCharactersMutation } from '@/entities/characters'
+import { useDebounceCallback } from '@/shared/hooks'
 
 const gradient = keyframes`
   0% {
@@ -28,30 +29,40 @@ const gradient = keyframes`
 
 export function Main() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const [foundCharacters] = useFoundCharactersMutation({
-    fixedCacheKey: 'shared-found-characters',
-  })
-  const pageNumber = searchParams.get('page') ?? 1
-  const attr = searchParams.get('q')
+  const [searchQuery, setSearchQuery] = useState<string>(
+    searchParams.get('search')
+  )
 
   const handlePageChange = (page: number) => {
     searchParams.set('page', String(page))
     setSearchParams(searchParams)
   }
 
-  const handleAttrChange = (attr: string) => {
-    if (!attr) {
-      searchParams.delete('q')
-      setSearchParams(searchParams)
+  const handleSearchQueryChange = (searchQueryParams: string) => {
+    setSearchParams((params) => {
+      searchParams.set('page', searchParams.get('page') || '1')
 
-      return
-    }
+      if (!searchQueryParams) {
+        searchParams.delete('search')
 
-    searchParams.delete('page')
-    setSearchParams({
-      q: attr,
+        return params
+      }
+
+      searchParams.set('search', searchQueryParams)
+
+      return params
     })
   }
+
+  const debouncedHandleSearchQueryCallback = useDebounceCallback(
+    handleSearchQueryChange,
+    350,
+    [handleSearchQueryChange, searchQuery]
+  )
+
+  useEffect(() => {
+    debouncedHandleSearchQueryCallback(searchQuery)
+  }, [searchQuery]) // missed debouncedHandleSearchQueryCallback on purpose
 
   return (
     <>
@@ -104,14 +115,11 @@ export function Main() {
             _placeholder={{
               color: '#b2b2b2',
             }}
-            onChange={(event) => {
-              handleAttrChange(event.target.value)
-
-              if (event.target.value) {
-                foundCharacters(event.target.value)
-              }
+            onChange={({ target: { value } }) => {
+              setSearchQuery(value)
             }}
             color="white"
+            value={searchQuery}
           />
           <InputRightElement
             children={
@@ -123,11 +131,7 @@ export function Main() {
             }
           />
         </InputGroup>
-        <CharactersList
-          attr={attr}
-          pageNumber={Number(pageNumber)}
-          onPageChange={handlePageChange}
-        />
+        <CharactersList onPageChange={handlePageChange} />
       </Container>
     </>
   )

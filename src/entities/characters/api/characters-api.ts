@@ -7,19 +7,14 @@ import type { PeopleResponse, CharacterResponse } from '.'
 
 export const charactersApi = query.injectEndpoints({
   endpoints: (build) => ({
-    allCharacters: build.query<People, number>({
+    allCharacters: build.query<People, Record<string, string>>({
       providesTags: ['People'],
-      query: (page = 1) => ({
-        url: `/people/?page=${page}`,
-      }),
-      transformResponse(characters: PeopleResponse) {
-        return transformPeople(characters)
+      query: (params) => {
+        return {
+          url: `/people`,
+          params,
+        }
       },
-    }),
-    foundCharacters: build.mutation<People, string>({
-      query: (attribute) => ({
-        url: `people/?search=${attribute}`,
-      }),
       transformResponse(characters: PeopleResponse) {
         return transformPeople(characters)
       },
@@ -39,5 +34,4 @@ export const charactersApi = query.injectEndpoints({
 export const {
   useAllCharactersQuery,
   useDetailCharacterQuery,
-  useFoundCharactersMutation,
 } = charactersApi
