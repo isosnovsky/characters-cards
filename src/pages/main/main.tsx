@@ -1,20 +1,11 @@
-import {
-  Container,
-  Box,
-  keyframes,
-  Heading,
-  Highlight,
-  InputGroup,
-  InputRightElement,
-  Input,
-  IconButton,
-} from '@chakra-ui/react'
+import { Container, Box, keyframes } from '@chakra-ui/react'
 import { useSearchParams } from 'react-router-dom'
-import { SearchIcon } from '@chakra-ui/icons'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { CharactersList } from '@/widgets/characters-list'
 import { useDebounceCallback } from '@/shared/hooks'
+
+import { SearchInput, Header } from './ui'
 
 const gradient = keyframes`
   0% {
@@ -64,6 +55,12 @@ export function Main() {
     debouncedHandleSearchQueryCallback(searchQuery)
   }, [searchQuery]) // missed debouncedHandleSearchQueryCallback on purpose
 
+  const triggerSearchQueryChange = ({
+    target: { value },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(value)
+  }
+
   return (
     <>
       <Box
@@ -79,58 +76,8 @@ export function Main() {
         backgroundSize="400% 400%"
       />
       <Container maxW="900px" paddingBottom={10}>
-        <Heading
-          as="h1"
-          fontFamily="Jedihol"
-          fontSize={[110, 150, 260]}
-          textAlign="center"
-          p="100px 0 0"
-          color="#ae699f"
-          height="100vh"
-          position="relative"
-          textShadow="20px 20px 0px #3ea0cf"
-        >
-          <Highlight
-            query="characters"
-            styles={{
-              position: 'absolute',
-              bottom: '70px',
-              left: '50%',
-              transform: 'translate(-50%, 0)',
-              px: '1',
-              py: '1',
-              bg: '#2a35f2',
-              fontSize: '44px',
-              color: 'white',
-              fontFamily: 'Jedi',
-              textShadow: 'none',
-            }}
-          >
-            Star wars characters
-          </Highlight>
-        </Heading>
-        <InputGroup maxWidth="300px" m="0 auto 50px">
-          <Input
-            placeholder="find character"
-            _placeholder={{
-              color: '#b2b2b2',
-            }}
-            onChange={({ target: { value } }) => {
-              setSearchQuery(value)
-            }}
-            color="white"
-            value={searchQuery}
-          />
-          <InputRightElement
-            children={
-              <IconButton
-                aria-label="search characters"
-                icon={<SearchIcon color="gray.300" />}
-                variant="ghost"
-              />
-            }
-          />
-        </InputGroup>
+        <Header />
+        <SearchInput value={searchQuery} onChange={triggerSearchQueryChange} />
         <CharactersList onPageChange={handlePageChange} />
       </Container>
     </>
