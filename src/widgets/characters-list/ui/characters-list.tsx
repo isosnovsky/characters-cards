@@ -41,7 +41,7 @@ export function CharactersList({ onPageChange }: ICharactersListProps) {
       <Box margin="50px 0 0 0">
         <Pagination
           onPageChange={onPageChange}
-          currentPage={Number(searchParams.get('page'))}
+          currentPage={Number(searchParams.get('page') || 1)}
           totalCount={data?.count}
           perPage={PER_PAGE}
         />

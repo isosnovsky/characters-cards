@@ -31,7 +31,4 @@ export const charactersApi = query.injectEndpoints({
   }),
 })
 
-export const {
-  useAllCharactersQuery,
-  useDetailCharacterQuery,
-} = charactersApi
+export const { useAllCharactersQuery, useDetailCharacterQuery } = charactersApi

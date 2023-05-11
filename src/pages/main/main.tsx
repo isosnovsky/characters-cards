@@ -1,9 +1,7 @@
 import { Container, Box, keyframes } from '@chakra-ui/react'
 import { useSearchParams } from 'react-router-dom'
-import React, { useEffect, useState } from 'react'
 
 import { CharactersList } from '@/widgets/characters-list'
-import { useDebounceCallback } from '@/shared/hooks'
 
 import { SearchInput, Header } from './ui'
 
@@ -20,9 +18,6 @@ const gradient = keyframes`
 
 export function Main() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const [searchQuery, setSearchQuery] = useState<string>(
-    searchParams.get('search')
-  )
 
   const handlePageChange = (page: number) => {
     searchParams.set('page', String(page))
@@ -31,7 +26,7 @@ export function Main() {
 
   const handleSearchQueryChange = (searchQueryParams: string) => {
     setSearchParams((params) => {
-      searchParams.set('page', searchParams.get('page') || '1')
+      searchParams.delete('page')
 
       if (!searchQueryParams) {
         searchParams.delete('search')
@@ -43,22 +38,6 @@ export function Main() {
 
       return params
     })
-  }
-
-  const debouncedHandleSearchQueryCallback = useDebounceCallback(
-    handleSearchQueryChange,
-    350,
-    [handleSearchQueryChange, searchQuery]
-  )
-
-  useEffect(() => {
-    debouncedHandleSearchQueryCallback(searchQuery)
-  }, [searchQuery]) // missed debouncedHandleSearchQueryCallback on purpose
-
-  const triggerSearchQueryChange = ({
-    target: { value },
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(value)
   }
 
   return (
@@ -77,7 +56,7 @@ export function Main() {
       />
       <Container maxW="900px" paddingBottom={10}>
         <Header />
-        <SearchInput value={searchQuery} onChange={triggerSearchQueryChange} />
+        <SearchInput onChange={handleSearchQueryChange} />
         <CharactersList onPageChange={handlePageChange} />
       </Container>
     </>
