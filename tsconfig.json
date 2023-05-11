@@ -21,5 +21,6 @@
     }
   },
   "include": ["src", "types"],
+  "exclude": ["./lint-staged.config.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
