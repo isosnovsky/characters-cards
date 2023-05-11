@@ -9,17 +9,17 @@ const globalStyles = css`
   @font-face {
     font-family: 'Jedi';
     font-style: normal;
-    src: url('/fonts/Starjedi.ttf');
+    src: url('/characters-cards/fonts/Starjedi.ttf');
   }
   @font-face {
     font-family: 'Jedihol';
     font-style: normal;
-    src: url('/fonts/Starjhol.ttf');
+    src: url('/characters-cards/fonts/Starjhol.ttf');
   }
   @font-face {
     font-family: 'Jediout';
     font-style: italic;
-    src: url('/fonts/Starjout.ttf');
+    src: url('/characters-cards/fonts/Starjout.ttf');
   }
 `
 

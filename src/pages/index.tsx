@@ -6,7 +6,7 @@ import { NotFound } from '@/pages/not-found'
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/characters-cards/',
     element: <Main />,
     errorElement: <NotFound />,
   },
