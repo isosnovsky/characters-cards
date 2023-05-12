@@ -1,4 +1,4 @@
-export type CharacterResponse = {
+export type ICharacterResponse = {
   name: string
   height: string
   mass: string
@@ -7,6 +7,7 @@ export type CharacterResponse = {
   eye_color: string
   birth_year: string
   gender: string
+  url: string
   homeworld: string
   films: string[]
   species: string[]
@@ -14,12 +15,11 @@ export type CharacterResponse = {
   starships: string[]
   created: string
   edited: string
-  url: string
 }
 
-export type PeopleResponse = {
+export type IPeopleResponse = {
   count: number
-  next: string
-  previous: string
-  results: CharacterResponse[]
+  next: string | null
+  previous: string | null
+  results: ICharacterResponse[]
 }

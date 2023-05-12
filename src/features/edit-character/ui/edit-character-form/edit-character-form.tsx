@@ -14,7 +14,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect } from 'react'
 
 import { EditableInput } from '@/shared/ui'
-import { useDebounceCallback } from '@/shared/hooks'
+import { useDebounceCallback } from '@/shared/lib/hooks'
 import type { Character } from '@/entities/characters'
 
 import { type CharacterFields, schema } from '../../lib'

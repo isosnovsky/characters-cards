@@ -24,7 +24,7 @@ export function Main() {
         return params
       }
 
-      searchParams.set('search', searchQueryParams)
+      searchParams.set('search', searchQueryParams.toLowerCase())
 
       return params
     })

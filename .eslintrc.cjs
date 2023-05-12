@@ -1,7 +1,9 @@
 module.exports = {
+  ignorePatterns: ["vitest.config.ts", "vitest.config.ts"],
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    jest: true
   },
   extends: [
     'airbnb',
@@ -26,7 +28,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['tsconfig.json']
+    project: ['tsconfig.json'],
   },
   rules: {
     'react/jsx-filename-extension': ['error', { extensions: ['.ts', '.tsx'] }],
@@ -101,12 +103,7 @@ module.exports = {
       }
     ],
     'no-param-reassign': ['error', { props: false }],
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        'devDependencies': true
-      }
-    ],
+    'import/no-extraneous-dependencies': 'off',
     'react/jsx-props-no-spreading': 'off',
     "react/no-unknown-property": ["error", { "ignore": ["css"] }],
     "react/react-in-jsx-scope": "off",

@@ -1,9 +1,9 @@
 import { toCamelCase } from '@/shared/lib'
 
-import type { CharacterResponse } from '../api'
+import type { ICharacterResponse } from '../api'
 import type { Character } from '../model'
 
-export function transformCharacter(response: CharacterResponse): Character {
+export function transformCharacter(response: ICharacterResponse): Character {
   const transformed = {
     id: response.url.split('/').at(-2),
   }

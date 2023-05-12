@@ -1,2 +1,2 @@
 export * from './types'
-export { store, persistedStore } from './store'
+export { store, persistedStore, createStore } from './store'

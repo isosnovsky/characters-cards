@@ -23,6 +23,13 @@ const globalStyles = css`
   }
 `
 
+if (import.meta.env.DEV) {
+  const { worker } = await import('./app/mock')
+
+  // eslint-disable-next-line no-void
+  void worker.start()
+}
+
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <Global styles={globalStyles} />

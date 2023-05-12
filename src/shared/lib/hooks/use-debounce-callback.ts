@@ -14,7 +14,7 @@ export function useDebounceCallback<T extends AnyFunction>(
   delay: number,
   deps: DependencyList
 ) {
-  const timeoutIdRef = useRef() as { current: number }
+  const timeoutIdRef = useRef<NodeJS.Timeout>()
   const debouncedCallback = useCallback(
     (...args: unknown[]) => {
       clearTimeout(timeoutIdRef.current)
