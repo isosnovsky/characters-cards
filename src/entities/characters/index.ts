@@ -5,8 +5,5 @@ export {
   useAllCharactersQuery,
   useDetailCharacterQuery,
   charactersApi,
-  handlers,
-  mockPeople,
-  queryPeople,
-  people,
 } from './api'
+export { handlers, mockPeople, queryPeople, people } from './mocks'

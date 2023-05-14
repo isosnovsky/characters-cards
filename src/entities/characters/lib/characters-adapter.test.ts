@@ -1,4 +1,4 @@
-import { mockCharacter } from '../api/mocks/characters.mock'
+import { mockCharacter } from '../mocks'
 
 import { transformCharacter } from './characters-adapter'
 
