@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, type PreloadedState } from '@reduxjs/toolkit'
 import {
   FLUSH,
   PAUSE,
@@ -14,17 +14,20 @@ import storage from 'redux-persist/lib/storage'
 import { rootReducer } from '@/app/store/rootReducer'
 import { query } from '@/shared/api'
 
+import type { RootState } from '.'
+
 const persistConfig = {
   key: 'root',
   storage,
 }
 
-function createStore() {
+export function createStore(preloadedState?: PreloadedState<RootState>) {
   return configureStore({
     reducer: persistReducer(
       persistConfig,
       rootReducer
     ) as unknown as typeof rootReducer,
+    preloadedState,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {

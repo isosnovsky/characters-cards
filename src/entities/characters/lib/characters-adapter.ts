@@ -1,11 +1,13 @@
 import { toCamelCase } from '@/shared/lib'
 
-import type { CharacterResponse } from '../api'
+import type { ICharacterResponse } from '../api'
 import type { Character } from '../model'
 
-export function transformCharacter(response: CharacterResponse): Character {
+import { transformUrlToId } from './transform-url-to-id'
+
+export function transformCharacter(response: ICharacterResponse): Character {
   const transformed = {
-    id: response.url.split('/').at(-2),
+    id: transformUrlToId(response.url),
   }
 
   Object.entries(response).forEach(([key, value]) => {

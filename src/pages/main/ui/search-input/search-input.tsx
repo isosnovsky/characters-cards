@@ -8,7 +8,7 @@ import {
 import { SearchIcon } from '@chakra-ui/icons'
 import { useSearchParams } from 'react-router-dom'
 
-import { useDebounceCallback } from '@/shared/hooks'
+import { useDebounceCallback } from '@/shared/lib/hooks'
 
 import type { ISearchInputProps } from './search-input.types'
 
@@ -32,7 +32,7 @@ export function SearchInput({ onChange, ...props }: ISearchInputProps) {
   return (
     <InputGroup maxWidth="300px" m="0 auto 50px">
       <Input
-        placeholder="find character"
+        placeholder="type character name"
         _placeholder={{
           color: '#b2b2b2',
         }}
@@ -42,6 +42,7 @@ export function SearchInput({ onChange, ...props }: ISearchInputProps) {
         onChange={(event) =>
           debouncedHandleSearchQueryChange(event.target.value)
         }
+        aria-label="search input"
       />
       <InputRightElement
         children={

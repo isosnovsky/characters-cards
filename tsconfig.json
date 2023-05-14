@@ -21,6 +21,6 @@
     }
   },
   "include": ["src", "types"],
-  "exclude": ["./lint-staged.config.js"],
+  "exclude": ["vitest.config.ts", "vite.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

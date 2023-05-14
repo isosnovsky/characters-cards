@@ -2,7 +2,7 @@ import React, { useRef, forwardRef } from 'react'
 import { HStack, IconButton, Input, InputProps } from '@chakra-ui/react'
 import { EditIcon } from '@chakra-ui/icons'
 
-import { useForwardRef } from '../../hooks'
+import { useForwardRef } from '../../lib/hooks'
 import type { WithForwardRef } from '../../types'
 
 function EditableInputComponent({

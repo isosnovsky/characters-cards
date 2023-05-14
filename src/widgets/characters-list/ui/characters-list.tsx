@@ -1,5 +1,5 @@
 import { Box, SimpleGrid } from '@chakra-ui/react'
-import { useSearchParams } from 'react-router-dom'
+import { useLocation, useSearchParams } from 'react-router-dom'
 
 import {
   useAllCharactersQuery,

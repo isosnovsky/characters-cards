@@ -3,7 +3,7 @@ import { query } from '@/shared/api'
 import type { People, Character } from '../model'
 import { transformCharacter, transformPeople } from '../lib'
 
-import type { PeopleResponse, CharacterResponse } from '.'
+import type { IPeopleResponse, ICharacterResponse } from '.'
 
 export const charactersApi = query.injectEndpoints({
   endpoints: (build) => ({
@@ -15,7 +15,7 @@ export const charactersApi = query.injectEndpoints({
           params,
         }
       },
-      transformResponse(characters: PeopleResponse) {
+      transformResponse(characters: IPeopleResponse) {
         return transformPeople(characters)
       },
     }),
@@ -24,7 +24,7 @@ export const charactersApi = query.injectEndpoints({
       query: (characterId) => ({
         url: `/people/${characterId}`,
       }),
-      transformResponse(character: CharacterResponse) {
+      transformResponse(character: ICharacterResponse) {
         return transformCharacter(character)
       },
     }),

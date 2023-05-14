@@ -14,7 +14,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect } from 'react'
 
 import { EditableInput } from '@/shared/ui'
-import { useDebounceCallback } from '@/shared/hooks'
+import { useDebounceCallback } from '@/shared/lib'
 import type { Character } from '@/entities/characters'
 
 import { type CharacterFields, schema } from '../../lib'
@@ -63,7 +63,7 @@ export function EditCharacterForm({
         <Heading fontFamily="Jedi" fontSize="100px" marginBottom={20}>
           {name}
         </Heading>
-        <form onChange={debouncedSubmit}>
+        <form onChange={debouncedSubmit} role="form">
           <FormControl isInvalid={Boolean(errors.birthYear)}>
             <Grid
               gridTemplateColumns="1fr 2 fr"
