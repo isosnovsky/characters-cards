@@ -63,7 +63,7 @@ export function EditCharacterForm({
         <Heading fontFamily="Jedi" fontSize="100px" marginBottom={20}>
           {name}
         </Heading>
-        <form onChange={debouncedSubmit} role="form">
+        <form onChange={debouncedSubmit}>
           <FormControl isInvalid={Boolean(errors.birthYear)}>
             <Grid
               gridTemplateColumns="1fr 2 fr"

@@ -30,11 +30,13 @@ export function SearchInput({ onChange, ...props }: ISearchInputProps) {
   }, [searchParams])
 
   return (
-    <InputGroup maxWidth="300px" m="0 auto 50px">
+    <InputGroup m="0 auto 50px">
       <Input
+        size="lg"
+        textAlign="center"
         placeholder="type character name"
         _placeholder={{
-          color: '#b2b2b2',
+          color: 'rgba(255,255,255,0.58)',
         }}
         color="white"
         ref={inputRef}
@@ -43,6 +45,8 @@ export function SearchInput({ onChange, ...props }: ISearchInputProps) {
           debouncedHandleSearchQueryChange(event.target.value)
         }
         aria-label="search input"
+        variant="flushed"
+        fontFamily="Jedi"
       />
       <InputRightElement
         children={
