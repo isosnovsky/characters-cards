@@ -6,4 +6,7 @@ export {
   useDetailCharacterQuery,
   charactersApi,
   handlers,
+  mockPeople,
+  queryPeople,
+  people,
 } from './api'

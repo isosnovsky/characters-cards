@@ -32,7 +32,7 @@ export function SearchInput({ onChange, ...props }: ISearchInputProps) {
   return (
     <InputGroup maxWidth="300px" m="0 auto 50px">
       <Input
-        placeholder="find character"
+        placeholder="type character name"
         _placeholder={{
           color: '#b2b2b2',
         }}
@@ -40,8 +40,9 @@ export function SearchInput({ onChange, ...props }: ISearchInputProps) {
         ref={inputRef}
         {...props}
         onChange={(event) =>
-          debouncedHandleSearchQueryChange(event.target.value.toLowerCase())
+          debouncedHandleSearchQueryChange(event.target.value)
         }
+        aria-label="search input"
       />
       <InputRightElement
         children={

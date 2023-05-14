@@ -15,8 +15,9 @@ export function CharacterCardPreviewSkeleton({
 }: ICharacterCardPreviewSkeletonProps) {
   return (
     <>
-      {Array.from({ length: count }).map(() => (
-        <Fade in>
+      {Array.from({ length: count }).map((value, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <Fade in key={count + index}>
           <Card
             bg="radial-gradient( circle 369px at -2.9% 12.9%,  rgba(247,234,163,1) 0%, rgba(236,180,238,0.56) 46.4%, rgba(163,203,247,1) 100.7% )"
             height="300px"

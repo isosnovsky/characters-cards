@@ -1,6 +1,4 @@
-import { ICharacterResponse, IPeopleResponse } from "@/entities/characters/api";
-import { b } from "msw/lib/glossary-de6278a9";
-import { validateActive } from "@reduxjs/toolkit/dist/listenerMiddleware/task";
+import type { ICharacterResponse, IPeopleResponse } from '../api'
 
 /**
  * Create map where key is a page number and value is a response data referring to that page.

@@ -23,7 +23,7 @@ export function CharacterCardPreview({
 
   return (
     <Fade in>
-      <Link to={`/character/${id}`}>
+      <Link to={`/character/${id}`} role="link" title={`${name} character`}>
         <Card
           bg="radial-gradient( circle 369px at -2.9% 12.9%,  rgba(247,234,163,1) 0%, rgba(236,180,238,0.56) 46.4%, rgba(163,203,247,1) 100.7% );"
           transition="box-shadow 0.4s"

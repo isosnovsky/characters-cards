@@ -9,21 +9,21 @@ const globalStyles = css`
   @font-face {
     font-family: 'Jedi';
     font-style: normal;
-    src: url('/characters-cards/fonts/Starjedi.ttf');
+    src: url('/fonts/Starjedi.ttf');
   }
   @font-face {
     font-family: 'Jedihol';
     font-style: normal;
-    src: url('/characters-cards/fonts/Starjhol.ttf');
+    src: url('/fonts/Starjhol.ttf');
   }
   @font-face {
     font-family: 'Jediout';
     font-style: italic;
-    src: url('/characters-cards/fonts/Starjout.ttf');
+    src: url('/fonts/Starjout.ttf');
   }
 `
 
-if (import.meta.env.DEV) {
+if (import.meta.env.DEV && import.meta.env.VITE_MODE === 'debug') {
   const { worker } = await import('./app/mock')
 
   // eslint-disable-next-line no-void

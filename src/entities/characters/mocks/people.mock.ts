@@ -1,9 +1,9 @@
 import { faker } from '@faker-js/faker'
 
-import type { IPeopleResponse } from '../types'
+import type { IPeopleResponse } from '../api'
 
-import { mockCharacter } from './characters.mock'
 import { createPageItemsMap, filterItemsFromMap } from './lib'
+import { mockCharacter } from './characters.mock'
 
 const OFFSET_LIMIT = 10
 const NOT_FOUND_ITEMS = {
@@ -14,7 +14,7 @@ const NOT_FOUND_ITEMS = {
 }
 
 export function mockPeople() {
-  const count = faker.datatype.number(100)
+  const count = faker.datatype.number({ min: 40, max: 100 })
 
   return createPageItemsMap(count, OFFSET_LIMIT, (totalAmount, perPage) => {
     return Array.from({ length: perPage }).map(mockCharacter)

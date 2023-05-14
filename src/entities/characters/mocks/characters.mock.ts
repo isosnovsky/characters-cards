@@ -2,8 +2,8 @@
 
 import { faker } from '@faker-js/faker'
 
-import type { ICharacterResponse, IPeopleResponse } from '../types'
-import { transformCharacter } from '../../lib'
+import type { ICharacterResponse, IPeopleResponse } from '../api'
+import { transformCharacter } from '../lib'
 
 import { filterItemsFromMap } from './lib'
 

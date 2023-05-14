@@ -2,10 +2,10 @@ import { rest } from 'msw'
 
 import { config } from '@/shared/lib'
 
-import { queryCharacterById } from './characters.mock'
 import { mockPeople, queryPeople } from './people.mock'
+import { queryCharacterById } from './characters.mock'
 
-const people = mockPeople()
+export const people = mockPeople()
 
 export const handlers = [
   rest.get(`${config.API_ENDPOINT}/people`, (req, res, ctx) => {
