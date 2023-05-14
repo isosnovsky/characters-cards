@@ -9,9 +9,9 @@ export function PaginationItem({
 }: PaginationItemProps) {
   if (isCurrent) {
     return (
-      <ListItem marginInlineStart={4} _first={{ marginInlineStart: 0 }}>
+      <ListItem marginInlineStart={[1, 2, 4]} _first={{ marginInlineStart: 0 }}>
         <Button
-          size="lg"
+          size={['sm', 'md', 'lg']}
           fontSize="lg"
           aria-label={`Go to page ${page}`}
           aria-current="true"
@@ -32,9 +32,9 @@ export function PaginationItem({
   }
 
   return (
-    <ListItem marginInlineStart={4} _first={{ marginInlineStart: 0 }}>
+    <ListItem marginInlineStart={[1, 2, 4]} _first={{ marginInlineStart: 0 }}>
       <Button
-        size="lg"
+        size={['sm', 'md', 'lg']}
         fontSize="lg"
         aria-label={`Go to page ${page}`}
         width="4"
