@@ -659,16 +659,16 @@ Try adjusting maxTime or maxRetries parameters for faker.helpers.unique().`)}fun
   @font-face {
     font-family: 'Jedi';
     font-style: normal;
-    src: url('/fonts/Starjedi.ttf');
+    src: url('${"/characters-cards/"}/fonts/Starjedi.ttf');
   }
   @font-face {
     font-family: 'Jedihol';
     font-style: normal;
-    src: url('/fonts/Starjhol.ttf');
+    src: url('${"/characters-cards/"}/fonts/Starjhol.ttf');
   }
   @font-face {
     font-family: 'Jediout';
     font-style: italic;
-    src: url('/fonts/Starjout.ttf');
+    src: url('${"/characters-cards/"}/fonts/Starjout.ttf');
   }
 `;Cx.createRoot(yJu).render(j.jsxs(ua.StrictMode,{children:[j.jsx(z1,{styles:AJu}),j.jsx(bJu,{})]}));
