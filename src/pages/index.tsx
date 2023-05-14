@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: `/${import.meta.env.BASE_URL}/character/:characterId`,
+    path: `/${import.meta.env.BASE_URL}character/:characterId`,
     errorElement: <NotFound />,
     element: <Character />,
   },
