@@ -33,7 +33,7 @@ export function Character() {
 
   return (
     <>
-      <Background />
+      <Background bg="linear-gradient(-45deg, #ee7752, #3ce7be, #23a6d5, #23d5ab)" />
       <Container maxW="900px">
         <VStack spacing={10}>
           <BackButton />

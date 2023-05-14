@@ -19,7 +19,7 @@ export function BackButton(props: ButtonProps) {
       borderWidth="5px"
       sx={{
         borderImageSource:
-          'linear-gradient(280deg,  #b7629a 0%, #e73c7e  51%, #23a6d5  70%, #31a3d3  100%)',
+          'linear-gradient(280deg,  #59deb5 0%, #3de7be  51%, #23a6d5  70%, #31a3d3  100%)',
         borderImageSlice: '1',
       }}
       _hover={{

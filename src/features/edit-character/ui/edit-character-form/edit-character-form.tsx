@@ -93,7 +93,7 @@ export function EditCharacterForm({
                 />
               </GridItem>
               <GridItem gridArea="error">
-                <FormErrorMessage color="white" margin="0px 0 20px">
+                <FormErrorMessage color="#E53E3E" margin="0px 0 20px">
                   {errors.birthYear && errors.birthYear.message}
                 </FormErrorMessage>
               </GridItem>
@@ -128,7 +128,7 @@ export function EditCharacterForm({
                 />
               </GridItem>
               <GridItem gridArea="error">
-                <FormErrorMessage color="white" margin="0px 0 20px">
+                <FormErrorMessage color="#E53E3E" margin="0px 0 20px">
                   {errors.height && errors.height.message}
                 </FormErrorMessage>
               </GridItem>
@@ -163,7 +163,7 @@ export function EditCharacterForm({
                 />
               </GridItem>
               <GridItem gridArea="error">
-                <FormErrorMessage color="white" margin="0px 0 20px">
+                <FormErrorMessage color="#E53E3E" margin="0px 0 20px">
                   {errors.mass && errors.mass.message}
                 </FormErrorMessage>
               </GridItem>
@@ -198,7 +198,7 @@ export function EditCharacterForm({
                 />
               </GridItem>
               <GridItem gridArea="error">
-                <FormErrorMessage color="white" margin="0px 0 20px">
+                <FormErrorMessage color="#E53E3E" margin="0px 0 20px">
                   {errors.skinColor && errors.skinColor.message}
                 </FormErrorMessage>
               </GridItem>
@@ -233,7 +233,7 @@ export function EditCharacterForm({
                 />
               </GridItem>
               <GridItem gridArea="error">
-                <FormErrorMessage color="white" margin="0px 0 20px">
+                <FormErrorMessage color="#E53E3E" margin="0px 0 20px">
                   {errors.eyeColor && errors.eyeColor.message}
                 </FormErrorMessage>
               </GridItem>
@@ -268,7 +268,7 @@ export function EditCharacterForm({
                 />
               </GridItem>
               <GridItem gridArea="error">
-                <FormErrorMessage color="white" margin="0px 0 20px">
+                <FormErrorMessage color="#E53E3E" margin="0px 0 20px">
                   {errors.hairColor && errors.hairColor.message}
                 </FormErrorMessage>
               </GridItem>
