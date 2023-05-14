@@ -21,6 +21,13 @@ import { type CharacterFields, schema } from '../../lib'
 
 import type { IEditCharacterFormProps } from './edit-character-form.types'
 
+/**
+ * Edit Character form.
+ * Use submitting on change instead of submit on submit for the sake of design. In the better world I would refuse it
+ * @param character - character to edit
+ * @param onChangeAttribute - debounced onChange callback to submit changes
+ */
+
 export function EditCharacterForm({
   character,
   onChangeAttribute,
