@@ -29,9 +29,9 @@ If you want to use debug mode you can modify VITE_MODE param in .env file to 'de
 
 ## Next steps
 
-1. [ ] Finished all integration tests
+1. [ ] Finish all integration tests
 2. [ ] Fix debug mode. It breaks down after a while due to msw
-3. [ ] Фdd a notification to a successful form edit
+3. [ ] Add a notification to a successful form edit
 4. [ ] Add error boundary preventing a page crash
 5. [ ] Think about isolation css instead of tailwinding
 6. [ ] Enhance UX 
