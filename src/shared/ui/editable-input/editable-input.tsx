@@ -15,13 +15,13 @@ function EditableInputComponent({
   return (
     <HStack
       spacing={0}
-      height={12}
+      height={[5, 12]}
       justifyContent="space-around"
       width="100%"
       ref={ref}
     >
       <Input
-        size="lg"
+        size={['md', 'lg']}
         fontSize="25"
         transition="none"
         variant="outline"

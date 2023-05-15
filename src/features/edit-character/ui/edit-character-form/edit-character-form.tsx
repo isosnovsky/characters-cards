@@ -67,17 +67,25 @@ export function EditCharacterForm({
   return (
     <Fade in>
       <Stack fontFamily="Jedi">
-        <Heading fontFamily="Jedi" fontSize="100px" marginBottom={20}>
+        <Heading
+          fontFamily="Jedi"
+          fontSize={['50px', '100px']}
+          marginBottom={[15, 20]}
+        >
           {name}
         </Heading>
         <form onChange={debouncedSubmit}>
           <FormControl isInvalid={Boolean(errors.birthYear)}>
             <Grid
-              gridTemplateColumns="1fr 2 fr"
+              gridTemplateColumns="auto 2fr"
               gridTemplateAreas={`'key value' 'error error'`}
             >
               <GridItem gridArea="key">
-                <FormLabel htmlFor="birthYear" fontSize="30px">
+                <FormLabel
+                  htmlFor="birthYear"
+                  fontSize={['20px', '30px']}
+                  marginInlineEnd={0}
+                >
                   <Highlight
                     query="Birth year"
                     styles={{
@@ -94,7 +102,7 @@ export function EditCharacterForm({
                 <EditableInput
                   id="birthYear"
                   placeholder="birthYear"
-                  fontSize="30px"
+                  fontSize={['20px', '30px']}
                   isInvalid={Boolean(errors.birthYear)}
                   {...register('birthYear')}
                 />
@@ -108,11 +116,15 @@ export function EditCharacterForm({
           </FormControl>
           <FormControl isInvalid={Boolean(errors.height)}>
             <Grid
-              gridTemplateColumns="1fr 2 fr"
+              gridTemplateColumns="auto 2fr"
               gridTemplateAreas={`'key value' 'error error'`}
             >
               <GridItem gridArea="key">
-                <FormLabel htmlFor="height" fontSize="30px">
+                <FormLabel
+                  htmlFor="height"
+                  fontSize={['20px', '30px']}
+                  marginInlineEnd={0}
+                >
                   <Highlight
                     query="Height"
                     styles={{
@@ -129,7 +141,7 @@ export function EditCharacterForm({
                 <EditableInput
                   id="height"
                   placeholder="height"
-                  fontSize="30px"
+                  fontSize={['20px', '30px']}
                   isInvalid={Boolean(errors.height)}
                   {...register('height')}
                 />
@@ -143,11 +155,15 @@ export function EditCharacterForm({
           </FormControl>
           <FormControl isInvalid={Boolean(errors.mass)}>
             <Grid
-              gridTemplateColumns="1fr 2 fr"
+              gridTemplateColumns="auto 2fr"
               gridTemplateAreas={`'key value' 'error error'`}
             >
               <GridItem gridArea="key">
-                <FormLabel htmlFor="mass" fontSize="30px">
+                <FormLabel
+                  htmlFor="mass"
+                  fontSize={['20px', '30px']}
+                  marginInlineEnd={0}
+                >
                   <Highlight
                     query="Mass"
                     styles={{
@@ -164,7 +180,7 @@ export function EditCharacterForm({
                 <EditableInput
                   id="mass"
                   placeholder="mass"
-                  fontSize="30px"
+                  fontSize={['20px', '30px']}
                   isInvalid={Boolean(errors.mass)}
                   {...register('mass')}
                 />
@@ -178,11 +194,15 @@ export function EditCharacterForm({
           </FormControl>
           <FormControl isInvalid={Boolean(errors.skinColor)}>
             <Grid
-              gridTemplateColumns="1fr 2 fr"
+              gridTemplateColumns="auto 2fr"
               gridTemplateAreas={`'key value' 'error error'`}
             >
               <GridItem gridArea="key">
-                <FormLabel htmlFor="skinColor" fontSize="30px">
+                <FormLabel
+                  htmlFor="skinColor"
+                  fontSize={['20px', '30px']}
+                  marginInlineEnd={0}
+                >
                   <Highlight
                     query="Skin color"
                     styles={{
@@ -199,7 +219,7 @@ export function EditCharacterForm({
                 <EditableInput
                   id="skinColor"
                   placeholder="skinColor"
-                  fontSize="30px"
+                  fontSize={['20px', '30px']}
                   isInvalid={Boolean(errors.skinColor)}
                   {...register('skinColor')}
                 />
@@ -213,11 +233,15 @@ export function EditCharacterForm({
           </FormControl>
           <FormControl isInvalid={Boolean(errors.eyeColor)}>
             <Grid
-              gridTemplateColumns="1fr 2 fr"
+              gridTemplateColumns="auto 2fr"
               gridTemplateAreas={`'key value' 'error error'`}
             >
               <GridItem gridArea="key">
-                <FormLabel htmlFor="eyeColor" fontSize="30px">
+                <FormLabel
+                  htmlFor="eyeColor"
+                  fontSize={['20px', '30px']}
+                  marginInlineEnd={0}
+                >
                   <Highlight
                     query="Eye color"
                     styles={{
@@ -234,7 +258,7 @@ export function EditCharacterForm({
                 <EditableInput
                   id="eyeColor"
                   placeholder="eyeColor"
-                  fontSize="30px"
+                  fontSize={['20px', '30px']}
                   isInvalid={Boolean(errors.eyeColor)}
                   {...register('eyeColor')}
                 />
@@ -248,11 +272,15 @@ export function EditCharacterForm({
           </FormControl>
           <FormControl isInvalid={Boolean(errors.hairColor)}>
             <Grid
-              gridTemplateColumns="1fr 2 fr"
+              gridTemplateColumns="auto 2fr"
               gridTemplateAreas={`'key value' 'error error'`}
             >
               <GridItem gridArea="key">
-                <FormLabel htmlFor="hairColor" fontSize="30px">
+                <FormLabel
+                  htmlFor="hairColor"
+                  fontSize={['20px', '30px']}
+                  marginInlineEnd={0}
+                >
                   <Highlight
                     query="Heir color"
                     styles={{
@@ -269,7 +297,7 @@ export function EditCharacterForm({
                 <EditableInput
                   id="hairColor"
                   placeholder="hairColor"
-                  fontSize="30px"
+                  fontSize={['20px', '30px']}
                   isInvalid={Boolean(errors.hairColor)}
                   {...register('hairColor')}
                 />
