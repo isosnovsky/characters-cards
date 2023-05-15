@@ -7,6 +7,7 @@ All is as usual `git clone && yarn install && yarn start`
 If you want to use debug mode you can modify VITE_MODE param in .env file to 'debug'
 
 ## Features
+🏛️ Project runs on [Feature-Sliced Design](https://feature-sliced.design/) architectural methodology
 
 💅 Styled with [Chakra-ui](https://chakra-ui.com/) and [EmotionJS](https://emotion.sh/docs/introduction)
 
@@ -33,3 +34,4 @@ If you want to use debug mode you can modify VITE_MODE param in .env file to 'de
 3. [ ] Фdd a notification to a successful form edit
 4. [ ] Add error boundary preventing a page crash
 5. [ ] Think about isolation css instead of tailwinding
+6. [ ] Enhance UX 

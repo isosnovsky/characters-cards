@@ -30,7 +30,7 @@ export function SearchInput({ onChange, ...props }: ISearchInputProps) {
   }, [searchParams])
 
   return (
-    <InputGroup m="0 auto 50px">
+    <InputGroup {...props}>
       <Input
         size="lg"
         textAlign="center"
@@ -40,7 +40,6 @@ export function SearchInput({ onChange, ...props }: ISearchInputProps) {
         }}
         color="white"
         ref={inputRef}
-        {...props}
         onChange={(event) =>
           debouncedHandleSearchQueryChange(event.target.value)
         }

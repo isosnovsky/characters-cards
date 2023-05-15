@@ -1,5 +1,5 @@
-import { Box, SimpleGrid } from '@chakra-ui/react'
-import { useLocation, useSearchParams } from 'react-router-dom'
+import { Box, SimpleGrid, Text } from '@chakra-ui/react'
+import { useSearchParams } from 'react-router-dom'
 
 import {
   useAllCharactersQuery,
@@ -27,9 +27,24 @@ export function CharactersList({ onPageChange }: ICharactersListProps) {
   return (
     <Box>
       <SimpleGrid
+        position="relative"
         spacing="40px"
         templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
       >
+        {!isFetching && data.count === 0 && (
+          <Text
+            textAlign="center"
+            fontSize={40}
+            fontFamily="Jediout"
+            color="black"
+            position="absolute"
+            top={0}
+            left="50%"
+            transform="translate(-50%, -100%)"
+          >
+            Nothing found
+          </Text>
+        )}
         {isFetching ? (
           <CharacterCardPreviewSkeleton count={PER_PAGE} />
         ) : (

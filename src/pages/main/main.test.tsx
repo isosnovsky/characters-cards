@@ -30,20 +30,4 @@ describe('main page', () => {
       expect(setSearchParams).toHaveBeenCalledWith('search', 'another name')
     })
   })
-  it('should set input value to url search params', async () => {
-    const setSearchParams = vi.fn()
-
-    vi.spyOn(URLSearchParams.prototype, 'set').mockImplementation(
-      setSearchParams
-    )
-    renderWithProviders(<Main />)
-
-    const input: HTMLInputElement = screen.getByLabelText('search input')
-
-    fireEvent.change(input, { target: { value: 'another name' } })
-
-    await waitFor(() => {
-      expect(setSearchParams).toHaveBeenCalledWith('search', 'another name')
-    })
-  })
 })

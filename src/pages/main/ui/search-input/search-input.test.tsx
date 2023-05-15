@@ -16,7 +16,7 @@ vi.mock('react-router-dom', async (importOriginal) => {
 describe('main page', () => {
   describe('ui', () => {
     describe('search input', () => {
-      it('should have value from url', () => {
+      it('should set value from url', () => {
         const nameToFind = 'some wierd name'
         const route = `/?search=${nameToFind}`
 
