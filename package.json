@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --base='/characters-cards/'",
     "typescheck": "tsc",
     "test": "vitest",
     "lint": "eslint --fix --cache --cache-location node_modules/.cache/eslintcache",

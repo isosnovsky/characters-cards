@@ -21,6 +21,13 @@ import { type CharacterFields, schema } from '../../lib'
 
 import type { IEditCharacterFormProps } from './edit-character-form.types'
 
+/**
+ * Edit Character form.
+ * Use submitting on change instead of submit on submit for the sake of design. In the better world I would refuse it
+ * @param character - character to edit
+ * @param onChangeAttribute - debounced onChange callback to submit changes
+ */
+
 export function EditCharacterForm({
   character,
   onChangeAttribute,
@@ -63,7 +70,7 @@ export function EditCharacterForm({
         <Heading fontFamily="Jedi" fontSize="100px" marginBottom={20}>
           {name}
         </Heading>
-        <form onChange={debouncedSubmit} role="form">
+        <form onChange={debouncedSubmit}>
           <FormControl isInvalid={Boolean(errors.birthYear)}>
             <Grid
               gridTemplateColumns="1fr 2 fr"
@@ -93,7 +100,7 @@ export function EditCharacterForm({
                 />
               </GridItem>
               <GridItem gridArea="error">
-                <FormErrorMessage color="white" margin="0px 0 20px">
+                <FormErrorMessage color="#E53E3E" margin="0px 0 20px">
                   {errors.birthYear && errors.birthYear.message}
                 </FormErrorMessage>
               </GridItem>
@@ -128,7 +135,7 @@ export function EditCharacterForm({
                 />
               </GridItem>
               <GridItem gridArea="error">
-                <FormErrorMessage color="white" margin="0px 0 20px">
+                <FormErrorMessage color="#E53E3E" margin="0px 0 20px">
                   {errors.height && errors.height.message}
                 </FormErrorMessage>
               </GridItem>
@@ -163,7 +170,7 @@ export function EditCharacterForm({
                 />
               </GridItem>
               <GridItem gridArea="error">
-                <FormErrorMessage color="white" margin="0px 0 20px">
+                <FormErrorMessage color="#E53E3E" margin="0px 0 20px">
                   {errors.mass && errors.mass.message}
                 </FormErrorMessage>
               </GridItem>
@@ -198,7 +205,7 @@ export function EditCharacterForm({
                 />
               </GridItem>
               <GridItem gridArea="error">
-                <FormErrorMessage color="white" margin="0px 0 20px">
+                <FormErrorMessage color="#E53E3E" margin="0px 0 20px">
                   {errors.skinColor && errors.skinColor.message}
                 </FormErrorMessage>
               </GridItem>
@@ -233,7 +240,7 @@ export function EditCharacterForm({
                 />
               </GridItem>
               <GridItem gridArea="error">
-                <FormErrorMessage color="white" margin="0px 0 20px">
+                <FormErrorMessage color="#E53E3E" margin="0px 0 20px">
                   {errors.eyeColor && errors.eyeColor.message}
                 </FormErrorMessage>
               </GridItem>
@@ -268,7 +275,7 @@ export function EditCharacterForm({
                 />
               </GridItem>
               <GridItem gridArea="error">
-                <FormErrorMessage color="white" margin="0px 0 20px">
+                <FormErrorMessage color="#E53E3E" margin="0px 0 20px">
                   {errors.hairColor && errors.hairColor.message}
                 </FormErrorMessage>
               </GridItem>
