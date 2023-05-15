@@ -35,7 +35,7 @@ export function Main() {
       <Background />
       <Container maxW="900px" paddingBottom={10}>
         <Header />
-        <SearchInput onChange={handleSearchQueryChange} />
+        <SearchInput m="0 auto 100px" onChange={handleSearchQueryChange} />
         <CharactersList onPageChange={handlePageChange} />
       </Container>
     </>
