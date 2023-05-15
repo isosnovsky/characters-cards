@@ -35,3 +35,4 @@ If you want to use debug mode you can modify VITE_MODE param in .env file to 'de
 4. [ ] Add error boundary preventing a page crash
 5. [ ] Think about isolation css instead of tailwinding
 6. [ ] Enhance UX 
+7. [ ] Replace selfwritten not-flexible pagination with something else
