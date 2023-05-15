@@ -1,14 +1,10 @@
-import { createBrowserRouter, createHashRouter } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 
 import { Character } from '@/pages/character'
 import { Main } from '@/pages/main'
 import { NotFound } from '@/pages/not-found'
 
-const createRouter = import.meta.env.PROD
-  ? createHashRouter
-  : createBrowserRouter
-
-export const router = createRouter([
+export const router = createBrowserRouter([
   {
     path: `/${import.meta.env.BASE_URL}`,
     element: <Main />,
