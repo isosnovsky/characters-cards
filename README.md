@@ -21,7 +21,7 @@ If you want to use debug mode you can modify VITE_MODE param in .env file to 'de
 
 🧬 Linted and formatted with [Eslint](https://eslint.org/) and [Prettier](https://prettier.io/)  respectively
 
-💌 Check, fill and validate with [React Hook Form](https://react-hook-form.com/)
+💌 Checks, fills and validates with [React Hook Form](https://react-hook-form.com/)
 
 🏢 [Typescript](https://www.typescriptlang.org/) all the way through
 
