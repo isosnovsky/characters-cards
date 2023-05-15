@@ -1,4 +1,4 @@
-All is as usual git clone && yarn install && yarn start
+All is as usual `git clone && yarn install && yarn start`
 
 ☄️
 [or you can check deployed app on gh-pages](https://isosnovsky.github.io/characters-cards/)
